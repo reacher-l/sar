@@ -1,0 +1,95 @@
+
+\documentclass{article}
+
+\usepackage{amsmath,amsfonts,stmaryrd,amssymb} % Math packages
+
+\usepackage{enumerate} % Custom item numbers for enumerations
+
+\usepackage[ruled]{algorithm2e} % Algorithms
+
+\usepackage[framemethod=tikz]{mdframed} % Allows defining custom boxed/framed environments
+
+\usepackage{listings} % File listings, with syntax highlighting
+\lstset{
+	basicstyle=\ttfamily, % Typeset listings in monospace font
+}
+
+\input{homework/sar_tex/structure.tex} % Include the file specifying the document structure and custom commands
+
+%----------------------------------------------------------------------------------------
+%	ASSIGNMENT INFORMATION
+%----------------------------------------------------------------------------------------
+\title{Operational Statistics for SAR Imagery Course Assignment} % Title of the assignment
+
+\author{rui qi lei\\ \texttt{19171213813}} % Author name and email address
+
+\date{Xidian University --- \today} % University, school and/or department name(s) and a date
+
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+	
+	\maketitle % Print the title
+	
+	%----------------------------------------------------------------------------------------
+	%	INTRODUCTION
+	%----------------------------------------------------------------------------------------
+	\section*{Urban SAR image analysis} % Unnumbered section
+	\par Synthetic aperture radar is a type of microwave imaging radar. It is also an airborne or spaceborne radar that can produce high-resolution images.In its early days, it used lensing to form images on negative plates (film), and now USES sophisticated radar data post-processing to obtain extremely narrow effective radiation beams (meaning very high spatial resolution for the resulting radar image).It is usually mounted on a moving carrier to image a relatively stationary target, or vice versa.Through some assumptions and analysis, it can be found that SAR data obeys gaussian random distribution.Its intensity obeys exponential distribution.I select a sample from either urban from the image shown in Fig. 3.4,By visualizing the gray scale of the image, it can be found that its distribution is closest to that of G0.The formula for the gamma ,K and GI0 distribution is as follows:
+	% Math equation/formula
+	
+	\begin{eqnarray}
+	Gamma:f(x)=\frac{L^L}{\sigma^{2^L}\Gamma(L)}z^(L-1)exp{\lbrace{-Lz}/\sigma^2\rbrace}
+	\end{eqnarray}
+	
+	\begin{equation}
+	\mathop {K:f(x)=\frac{2\lambda L}{\Gamma(\alpha)\Gamma(L)}(\lambda Lz)^{\frac{\alpha+L}{2}-1}K_{\alpha-L}(2\sqrt{\lambda Lz})}
+	\end{equation}
+	\begin{equation}
+	\mathop {G0:f(x)=\frac{L^L\Gamma(L-\alpha)}{\gamma^\alpha\Gamma(L)\Gamma(-\alpha)}\frac{z^{L-1}}{{(\gamma+Lz)}^{L-\alpha}}}
+	\end{equation}
+	\par The gamma distribution is figured below:
+	\begin{figure}[h] % [h] forces the figure to be output where it is defined in the code (it suppresses floating)
+		\centering
+		\includegraphics[width=2in]{homework/picture/gamma.png}
+		\caption{Gamma distribution}
+	\end{figure}
+	
+	\par The K distribution is figured below:
+	\begin{figure}[h] % [h] forces the figure to be output where it is defined in the code (it suppresses floating)
+		\centering
+		\includegraphics[width=2in]{homework/picture/K.png}
+		\caption{K distribution}
+	\end{figure}
+	
+	\par The G0 distribution is figured below:
+	\begin{figure}[h] % [h] forces the figure to be output where it is defined in the code (it suppresses floating)
+		\centering
+		\includegraphics[width=2in]{homework/picture/g0.png}
+		\caption{K distribution}
+	\end{figure}
+	
+	\par I selected a small piece of SAR image of the city for analysis.The image below shows the original SAR image on the left and the cropped city image on the right in figure6.The original image size is829x330,and the size of the cropped image is 500x199.The gray scale of the image is analyzed, and its histogram is shown in figure 4
+	
+	\begin{figure}[h] % [h] forces the figure to be output where it is defined in the code (it suppresses floating)
+    	\centering
+    	\includegraphics[width=4in]{homework/picture/gray_hist.png} 
+    	\caption{ hist distribution}
+    \end{figure}
+	\par I used three functions to fit the data distribution of SAR image, namely, Gamma distribution G0 distribution and k distribution.The red curve is gamma distribution, and its parameter is $shape=3$, scale=1/10.The blue curve is G0 distribution, and its parameter is a=-5.3,r=1.7,L=50.The black curve is K distribution, and its parameter is $p_alpha=5$, $p_lambda=16.5$, $p_Looks=60$.
+	
+	\begin{figure}[h] % [h] forces the figure to be output where it is defined in the code (it suppresses floating)
+    	\centering
+    	\includegraphics[width=4in]{homework/picture/urban.png} 
+    	\caption{Curve fitting distribution}
+    \end{figure}
+
+	\begin{figure}[h] % [h] forces the figure to be output where it is defined in the code (it suppresses floating)
+		\centering
+		\includegraphics[width=4in]{homework/picture/ori.png} %Example image
+		\includegraphics[width=2in]{homework/picture/pic.jpg}
+		\caption{Original image(left) and Captured image(right)}
+	\end{figure}
+
+\end{document}
